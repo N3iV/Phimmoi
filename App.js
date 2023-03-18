@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Login from "./screens/Login";
 import MovieDetails from "./Components/MovieDetails";
+import SignUp from "./screens/SignUp";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} options={headerStyle} />
         <Stack.Screen name="MovieDetails" component={MovieDetails} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUp" component={SignUp} />
       </Stack.Navigator>
     </NavigationContainer>
   );
