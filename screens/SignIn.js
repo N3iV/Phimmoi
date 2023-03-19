@@ -14,9 +14,7 @@ import {
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 
-
-
-const Login = () => {
+const SignIn = () => {
   const onSignUp = () => {
     const navigation = useNavigation();
     navigation.navigate("Home");
@@ -57,30 +55,27 @@ const Login = () => {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
         />
-
       </View>
-      <Text style={styles.textSignup}>
-        You don't have account?{' '}
-        <TouchableOpacity onPress={onSignUp}>
-          <Text style={styles.link}>Sign up</Text>
-        </TouchableOpacity>
-      </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => { }} style={styles.button}>
-          <Text style={styles.buttonText}>Sign in</Text>
-        </TouchableOpacity>
-        {/* <TouchableOpacity
-          onPress={handleSignUp}
-          style={[styles.button, styles.buttonOutline]}
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Home");
+          }}
+          style={styles.button}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
-        </TouchableOpacity> */}
+          <Text style={styles.buttonText}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => {}} style={styles.button}>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-export default Login;
+export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
@@ -123,8 +118,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   link: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: "blue",
+    textDecorationLine: "underline",
   },
   textSignup: {
     width: "80%",
@@ -133,8 +128,8 @@ const styles = StyleSheet.create({
   },
   textHeader: {
     fontSize: 50,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     color: "#7892F9",
   },
   buttonOutlineText: {},
