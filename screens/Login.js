@@ -14,7 +14,13 @@ import {
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 
+
+
 const Login = () => {
+  const onSignUp = () => {
+    const navigation = useNavigation();
+    navigation.navigate("Home");
+  };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
@@ -36,31 +42,38 @@ const Login = () => {
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <Text style={styles.textHeader}>Sign in</Text>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
-          styles={styles.input}
+          style={styles.input}
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           placeholder="Password"
-          styles={styles.input}
+          style={styles.input}
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
         />
+
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={() => {navigation.navigate("Home")}} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => { }} style={styles.button}>
+          <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity
           onPress={handleSignUp}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Register</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </KeyboardAvoidingView>
   );
@@ -76,12 +89,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
+    marginTop: 70,
   },
   buttonContainer: {
-    width: "60%",
+    width: "80%",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 20,
   },
   button: {
     backgroundColor: "#7892F9",
@@ -94,8 +108,9 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "#fff",
     paddingHorizontal: 15,
-    paddingVertical: 10,
-    marginTop: 5,
+    paddingVertical: 15,
+    marginTop: 10,
+    borderRadius: 10,
   },
   buttonText: {
     color: "#fff",
@@ -105,6 +120,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderColor: "#7892F9",
     borderWidth: 2,
+  },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
+  textSignup: {
+    width: "80%",
+    fontSize: 16,
+    marginTop: 20,
+  },
+  textHeader: {
+    fontSize: 50,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: "#7892F9",
   },
   buttonOutlineText: {},
 });
