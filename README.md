@@ -1,12 +1,29 @@
 # Phimmoi
 
-# Features: 
+[![React Native](https://img.shields.io/badge/Made%20with-ReactNative-blue.svg)](https://reactnative.dev/)
+
+## Features: 
   - Sign In/ Sign Up
   - View list movies (UpComing, Watching, Popular, ...)
   - View detail movie
   - Watch trailer
   - Search
+
+## Technology used
+- React Native
+- Firebase Storage
+- themoviedb API
+  
 # Member
+  - Hung Nguyen
+  - Nam Pham
+  - Vien Huynh
+  
+  
+## Screenshots
+ 
+   Coming soon
+
 ## Contributors✨
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
