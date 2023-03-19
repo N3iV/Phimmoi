@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./screens/Home";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Login from "./screens/Login";
-import MovieDetails from "./Components/MovieDetails";
+import MovieDetails from "./components/movieDetails";
 const Stack = createStackNavigator();
 
 export default function App() {
