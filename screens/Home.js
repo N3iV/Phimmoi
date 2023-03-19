@@ -1,35 +1,26 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { View, Text,StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, View } from "react-native";
 import { getPopular } from "../api/movies";
+import DiscoverMovie from "../components/DiscoverMovies";
+import TrendingMovies from "../components/TrendingMovies";
+import TrendingPeople from "../components/TrendingPeople";
+import Styles from "../styles/Styles";
 
-export default function Home() {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    const _getPopularMovies = async () => {
-      const res = await getPopular();
-      setPopularMovies(res);
-    };
-    _getPopularMovies();
-  }, []);
+export default function Home(props) {
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-      <TouchableOpacity onPress={()=>{ 
-        navigation.navigate('MovieDetails')
-      }}>
-        <Text>Detail</Text>
-      </TouchableOpacity>
+    <View style={Styles.sectionBg}>
+      <DiscoverMovie />
+      <TrendingPeople />
+      <TrendingMovies navigation={props.navigation} />
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  }})
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

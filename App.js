@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={Home} options={headerStyle} />
         <Stack.Screen
-          name="MovieDetails"
+          name="movieDetails"
           component={MovieDetails}
           options={{ headerShown: false }}
         />

@@ -4,7 +4,7 @@ import Constants from "../constants/constants.js";
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
-const MovieDetailStyles = StyleSheet.create({
+const Styles = StyleSheet.create({
   sectionBg: {
     backgroundColor: Constants.baseColor,
     height: deviceHeight,
@@ -105,4 +105,4 @@ const MovieDetailStyles = StyleSheet.create({
   },
 });
 
-export default MovieDetailStyles;
+export default Styles;

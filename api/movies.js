@@ -6,3 +6,11 @@ export const getPopular = () => {
 export const getMovieById = (id) => {
   return http.get(`/movie/${id}`);
 };
+
+export const getDiscoverMovies = () => {
+  return http.get("/discover/movie");
+};
+
+export const getTrendingMovies = () => {
+  return http.get("/movie/top_rated");
+};
