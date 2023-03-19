@@ -1,10 +1,10 @@
-import {Dimensions, StyleSheet} from 'react-native';
-import Constants from './constants/constants.js';
+import { Dimensions, StyleSheet } from "react-native";
+import Constants from "../constants/constants.js";
 
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
-const Styles = StyleSheet.create({
+const MovieDetailStyles = StyleSheet.create({
   sectionBg: {
     backgroundColor: Constants.baseColor,
     height: deviceHeight,
@@ -18,7 +18,7 @@ const Styles = StyleSheet.create({
     width: 60,
     color: Constants.textColor,
     fontSize: 12,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 10,
   },
   trendingPeopleContainer: {
@@ -37,7 +37,7 @@ const Styles = StyleSheet.create({
   movieTitle: {
     color: Constants.textColor,
     width: 150,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: 5,
     fontSize: 16,
   },
@@ -48,7 +48,7 @@ const Styles = StyleSheet.create({
   detailsMovieTitle: {
     fontSize: 28,
     color: Constants.textColor,
-    textAlign: 'center',
+    textAlign: "center",
     marginTop: -40,
   },
   linkContainer: {
@@ -62,19 +62,19 @@ const Styles = StyleSheet.create({
   overview: {
     color: Constants.textColor,
     marginHorizontal: 10,
-    textAlign: 'justify',
     fontSize: 16,
+    letterSpacing: 1.2,
   },
   details: {
     color: Constants.secondaryColor,
     fontSize: 15,
     marginLeft: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   detailsContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginVertical: 20,
   },
   genreContainer: {
@@ -89,21 +89,20 @@ const Styles = StyleSheet.create({
     color: Constants.textColor,
     fontSize: 16,
   },
-  arrowBack:{
-    position:'absolute',
-    borderRadius:100,
+  arrowBack: {
+    position: "absolute",
+    borderRadius: 100,
     color: "white",
-    zIndex:10,
+    zIndex: 10,
     top: 40,
-    marginLeft:10,
+    marginLeft: 10,
   },
-  likeButton:{
-    position: 'absolute',
+  likeButton: {
+    position: "absolute",
     top: 260,
-    left:deviceWidth - 45,
-    zIndex:99
-
-  }
+    left: deviceWidth - 45,
+    zIndex: 99,
+  },
 });
 
-export default Styles;
+export default MovieDetailStyles;

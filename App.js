@@ -3,18 +3,22 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./screens/Home";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Login from "./screens/Login";
 import MovieDetails from "./components/MovieDetails";
 import SignUp from "./screens/SignUp";
+import SignIn from "./screens/SignIn";
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
-        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Home" component={Home} options={headerStyle} />
-        <Stack.Screen name="MovieDetails" component={MovieDetails} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="MovieDetails"
+          component={MovieDetails}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="SignUp" component={SignUp} />
       </Stack.Navigator>
     </NavigationContainer>
