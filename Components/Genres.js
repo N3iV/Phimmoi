@@ -1,11 +1,11 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import MovieDetailStyles from "../styles/MovieDetailStyles";
+import Styles from "../styles/Styles";
 
 const Genres = ({ genre }) => {
   return (
-    <View style={MovieDetailStyles.genreContainer}>
-      <Text style={MovieDetailStyles.genre}>{genre.name}</Text>
+    <View style={Styles.genreContainer}>
+      <Text style={Styles.genre}>{genre.name}</Text>
     </View>
   );
 };

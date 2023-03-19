@@ -6,13 +6,11 @@ import { useNavigation } from "@react-navigation/native";
 import { IMAGE_POSTER_URL } from "../helper/config";
 import Icon from "react-native-vector-icons/AntDesign";
 import IconIos from "react-native-vector-icons/Ionicons";
-import MovieDetailStyles from "../styles/MovieDetailStyles";
+import Styles from "../styles/Styles";
 import Genres from "./Genres";
 import Constants from "../constants/constants";
-// const MovieDetails = (props) => {
 
-const MovieDetails = () => {
-  const [movieID, setMovieID] = useState("");
+const MovieDetails = (props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [details, setDetails] = useState([]);
 
@@ -21,15 +19,15 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const _getMovie = async () => {
-      const res = await getMovieById("2");
+      const res = await getMovieById(props.route.params.movieId);
       setDetails(res);
     };
     _getMovie();
   }, []);
 
   return (
-    <View style={MovieDetailStyles.sectionBg}>
-      <View style={MovieDetailStyles.arrowBack}>
+    <View style={Styles.sectionBg}>
+      <View style={Styles.arrowBack}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Home");
@@ -40,14 +38,12 @@ const MovieDetails = () => {
       </View>
       <View>
         <Image
-          style={MovieDetailStyles.imageBg}
+          style={Styles.imageBg}
           source={{ uri: `${IMAGE_POSTER_URL}${details.backdrop_path}` }}
         ></Image>
       </View>
-      <Text style={MovieDetailStyles.detailsMovieTitle}>
-        {details.original_title}
-      </Text>
-      <View style={MovieDetailStyles.linkContainer}>
+      <Text style={Styles.detailsMovieTitle}>{details.original_title}</Text>
+      <View style={Styles.linkContainer}>
         <TouchableOpacity
           onPress={() => {
             Linking.openURL(details.homepage);
@@ -56,7 +52,7 @@ const MovieDetails = () => {
           <Icon name="link" color={Constants.textColor} size={22}></Icon>
         </TouchableOpacity>
       </View>
-      <View style={MovieDetailStyles.likeButton}>
+      <View style={Styles.likeButton}>
         <TouchableOpacity onPress={() => setIsLiked((isLiked) => !isLiked)}>
           {isLiked ? (
             <IconIos
@@ -73,23 +69,23 @@ const MovieDetails = () => {
           )}
         </TouchableOpacity>
       </View>
-      <Text style={MovieDetailStyles.heading}>OVERVIEW</Text>
-      <Text style={MovieDetailStyles.overview}>{details.overview}</Text>
-      <View style={MovieDetailStyles.detailsContainer}>
+      <Text style={Styles.heading}>OVERVIEW</Text>
+      <Text style={Styles.overview}>{details.overview}</Text>
+      <View style={Styles.detailsContainer}>
         <View>
-          <Text style={MovieDetailStyles.heading}>BUDGET</Text>
-          <Text style={MovieDetailStyles.details}>$ {details.budget}</Text>
+          <Text style={Styles.heading}>BUDGET</Text>
+          <Text style={Styles.details}>$ {details.budget}</Text>
         </View>
         <View>
-          <Text style={MovieDetailStyles.heading}>DURATION</Text>
-          <Text style={MovieDetailStyles.details}>{details.runtime} min.</Text>
+          <Text style={Styles.heading}>DURATION</Text>
+          <Text style={Styles.details}>{details.runtime} min.</Text>
         </View>
         <View>
-          <Text style={MovieDetailStyles.heading}>RELEASE DATE</Text>
-          <Text style={MovieDetailStyles.details}>{details.release_date}</Text>
+          <Text style={Styles.heading}>RELEASE DATE</Text>
+          <Text style={Styles.details}>{details.release_date}</Text>
         </View>
       </View>
-      <Text style={MovieDetailStyles.heading}>GENRE</Text>
+      <Text style={Styles.heading}>GENRE</Text>
       <View style={{ display: "flex", flexDirection: "row" }}>
         {details?.genres?.length &&
           details.genres.map((genre) => (
