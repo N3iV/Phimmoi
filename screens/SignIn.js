@@ -30,7 +30,6 @@ const Login = () => {
     });
   }, []);
 
-
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <Text style={styles.textHeader}>Sign in</Text>
@@ -82,13 +81,15 @@ const Login = () => {
         >
           <Icon name="google" size={20} color="#ccc" style={styles.icon} />
           <Text style={styles.buttonOutlineText}>Sign in with google</Text>
+
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-export default Login;
+export default SignIn;
+
 
 const styles = StyleSheet.create({
   container: {
