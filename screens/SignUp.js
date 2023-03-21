@@ -26,12 +26,17 @@ const SignUp = () => {
 
 
     const handleSignUp = () => {
+        if(password==passwordRP){
         createUserWithEmailAndPassword(auth, email, password).then(
             (userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
             }
         );
+        }
+        else{
+            console.log('mật khẩu không trùng khớp');
+        }
     };
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -60,20 +65,16 @@ const SignUp = () => {
             </View>
             <Text style={styles.textSignup}>
                 Have a account?{' '}
-                <TouchableOpacity onPress={onSignIn}>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate("SignIn");
+                }}>
                     <Text style={styles.link}>Sign in</Text>
                 </TouchableOpacity>
             </Text>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={() => { }} style={styles.button}>
+                <TouchableOpacity onPress={handleSignUp} style={styles.button}>
                     <Text style={styles.buttonText}>Sign up</Text>
                 </TouchableOpacity>
-                {/* <TouchableOpacity
-                    onPress={handleSignUp}
-                    style={[styles.button, styles.buttonOutline]}
-                >
-                    <Text style={styles.buttonOutlineText}>Register</Text>
-                </TouchableOpacity> */}
             </View>
         </KeyboardAvoidingView>
     );
@@ -104,10 +105,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     input: {
+        fontSize: 16,
         backgroundColor: "#fff",
         paddingHorizontal: 15,
         paddingVertical: 15,
-        marginTop: 10,
+        marginTop: 20,
         borderRadius: 10,
     },
     buttonText: {
@@ -136,3 +138,4 @@ const styles = StyleSheet.create({
     },
     buttonOutlineText: {},
 });
+

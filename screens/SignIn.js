@@ -13,12 +13,12 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const SignIn = () => {
-  const onSignUp = () => {
-    const navigation = useNavigation();
-    navigation.navigate("Home");
-  };
+
+
+
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
@@ -30,14 +30,6 @@ const SignIn = () => {
     });
   }, []);
 
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      }
-    );
-  };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <Text style={styles.textHeader}>Sign in</Text>
@@ -55,20 +47,41 @@ const SignIn = () => {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
         />
+
       </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Home");
-          }}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Sign In</Text>
+      <Text style={styles.textSignup}>
+        You don't have account?{' '}
+        <TouchableOpacity onPress={() => {
+          navigation.navigate("SignUp");
+        }}>
+          <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
-      </View>
+      </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-          <Text style={styles.buttonText}>Sign Up</Text>
+        <TouchableOpacity onPress={() => {
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              navigation.navigate("Home");
+            }
+            else{
+              console.log('sai tk hoac mk')
+            }
+          })
+        }} style={styles.button}>
+          <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
+        <View style={styles.lineContainer}>
+          <View style={styles.line} />
+          <Text style={styles.textLine}>OR</Text>
+          <View style={styles.line} />
+        </View>
+        <TouchableOpacity
+          // onPress={handleSignUp}
+          style={[styles.button, styles.buttonOutline]}
+        >
+          <Icon name="google" size={20} color="#ccc" style={styles.icon} />
+          <Text style={styles.buttonOutlineText}>Sign in with google</Text>
+
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -76,6 +89,7 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -102,13 +116,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   input: {
+    fontSize: 16,
     backgroundColor: "#fff",
     paddingHorizontal: 15,
     paddingVertical: 15,
-    marginTop: 10,
+    marginTop: 20,
     borderRadius: 10,
   },
   buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
     color: "#fff",
   },
   buttonOutline: {
@@ -116,10 +133,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderColor: "#7892F9",
     borderWidth: 2,
+    flexDirection: 'row',
   },
   link: {
-    color: "blue",
-    textDecorationLine: "underline",
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   textSignup: {
     width: "80%",
@@ -128,9 +146,35 @@ const styles = StyleSheet.create({
   },
   textHeader: {
     fontSize: 50,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     color: "#7892F9",
   },
-  buttonOutlineText: {},
+  icon: {
+    marginLeft: 40,
+  },
+  lineContainer: {
+    width: "80%",
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  buttonOutlineText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    marginLeft: 19,
+    color: "#7892F9",
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#ccc',
+  },
+  textLine: {
+    color: '#ccc',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginHorizontal: 10,
+  },
 });
