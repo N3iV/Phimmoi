@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Text } from "react-native";
-import { TouchableOpacity } from "react-native";
 import {
   KeyboardAvoidingView,
   StyleSheet,
   TextInput,
   View,
+  TouchableOpacity,
+  Text,
 } from "react-native";
 import { auth } from "../config/firebase";
 import {
@@ -13,12 +13,9 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from "react-native-vector-icons/FontAwesome";
 
-
-
-
-const Login = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
@@ -47,27 +44,30 @@ const Login = () => {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
         />
-
       </View>
       <Text style={styles.textSignup}>
-        You don't have account?{' '}
-        <TouchableOpacity onPress={() => {
-          navigation.navigate("SignUp");
-        }}>
+        You don't have account?{" "}
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("SignUp");
+          }}
+        >
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => {
-          onAuthStateChanged(auth, (user) => {
-            if (user) {
-              navigation.navigate("Home");
-            }
-            else{
-              console.log('sai tk hoac mk')
-            }
-          })
-        }} style={styles.button}>
+        <TouchableOpacity
+          onPress={() => {
+            onAuthStateChanged(auth, (user) => {
+              if (user) {
+                navigation.navigate("Home");
+              } else {
+                console.log("sai tk hoac mk");
+              }
+            });
+          }}
+          style={styles.button}
+        >
           <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
         <View style={styles.lineContainer}>
@@ -80,8 +80,7 @@ const Login = () => {
           style={[styles.button, styles.buttonOutline]}
         >
           <Icon name="google" size={20} color="#ccc" style={styles.icon} />
-          <Text style={styles.buttonOutlineText}>Sign in with google</Text>
-
+          <Text style={styles.buttonOutlineText}>Sign in with Google</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -89,7 +88,6 @@ const Login = () => {
 };
 
 export default SignIn;
-
 
 const styles = StyleSheet.create({
   container: {
@@ -125,7 +123,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: "#fff",
   },
   buttonOutline: {
@@ -133,11 +131,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderColor: "#7892F9",
     borderWidth: 2,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   link: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: "blue",
+    textDecorationLine: "underline",
   },
   textSignup: {
     width: "80%",
@@ -146,8 +144,8 @@ const styles = StyleSheet.create({
   },
   textHeader: {
     fontSize: 50,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     color: "#7892F9",
   },
   icon: {
@@ -156,25 +154,25 @@ const styles = StyleSheet.create({
   lineContainer: {
     width: "80%",
     marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   buttonOutlineText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    alignItems: 'center',
+    fontWeight: "bold",
+    alignItems: "center",
     marginLeft: 19,
     color: "#7892F9",
   },
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: "#ccc",
   },
   textLine: {
-    color: '#ccc',
+    color: "#ccc",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginHorizontal: 10,
   },
 });
