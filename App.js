@@ -25,26 +25,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-    // <NavigationContainer>
-    //   <Stack.Navigator
-    //     screenOptions={{ headerTitleAlign: "center" }}
-    //     initialRouteName="SignIn"
-    //   >
-    //     <Stack.Screen name="SignIn" component={SignIn} />
-    //     <Stack.Screen name="Home" component={Home} options={headerStyle} />
-    //     <Stack.Screen
-    //       name="movieDetails"
-    //       component={MovieDetails}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen name="SignUp" component={SignUp} />
-    //     <Stack.Screen
-    //       name="FavoriteList"
-    //       component={FavoriteList}
-    //       options={headerStyleFav}
-    //     />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
   );
 }
 

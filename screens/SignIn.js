@@ -11,24 +11,37 @@ import { auth } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Toast from "react-native-toast-message";
+import { Alert } from "react-native";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigation.navigate("StartDrawer");
+
+  const handleLogin = async () => {
+    try {
+      if (email !== "" && password !== "") {
+        await signInWithEmailAndPassword(auth, email, password).then(
+          (userCredential) => {
+            const user = userCredential.user;
+
+            if (user) navigation.navigate("Home");
+          }
+        );
       }
-    });
-  }, []);
+    } catch (error) {
+      Alert.alert("Authentication failed");
+    }
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <Toast />
       <Text style={styles.textHeader}>Sign in</Text>
       <View style={styles.inputContainer}>
         <TextInput
@@ -56,18 +69,7 @@ const SignIn = () => {
         </TouchableOpacity>
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            onAuthStateChanged(auth, (user) => {
-              if (user) {
-                navigation.navigate("StartDrawer");
-              } else {
-                console.log("sai tk hoac mk");
-              }
-            });
-          }}
-          style={styles.button}
-        >
+        <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
         <View style={styles.lineContainer}>
