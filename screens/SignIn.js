@@ -22,7 +22,7 @@ const SignIn = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigation.navigate("Home");
+        navigation.navigate("StartDrawer");
       }
     });
   }, []);
@@ -60,7 +60,7 @@ const SignIn = () => {
           onPress={() => {
             onAuthStateChanged(auth, (user) => {
               if (user) {
-                navigation.navigate("Home");
+                navigation.navigate("StartDrawer");
               } else {
                 console.log("sai tk hoac mk");
               }

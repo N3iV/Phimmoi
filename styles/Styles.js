@@ -103,6 +103,61 @@ const Styles = StyleSheet.create({
     left: deviceWidth - 45,
     zIndex: 99,
   },
+  movieContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: Constants.fadedColor,
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+  },
+  favMovieTitle: {
+    color: Constants.textColor,
+    fontSize: 16,
+  },
+  posterImageFavList: {
+    height: 120,
+    width: 72,
+    borderRadius: 10,
+    marginLeft: 5,
+  },
+  descMovieContainer: {
+    width: 220,
+    marginLeft: 30,
+  },
+  favMovieDate: {
+    color: Constants.fadedColor,
+  },
+  drawerList: {
+    color: Constants.textColor,
+    paddingTop: 20,
+  },
+  logOut: {
+    textAlign: "center",
+    color: Constants.fadedColor,
+    padding: 10,
+    paddingLeft: 20,
+    fontSize: 16,
+    borderTopWidth: 1,
+
+    borderColor: Constants.fadedColor,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  logOutText: {
+    fontSize: 16,
+    marginLeft: 10,
+    color: Constants.textColor,
+  },
+  headingDrawer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+  },
 });
 
 export default Styles;

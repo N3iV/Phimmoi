@@ -1,7 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { getPopular } from "../api/movies";
+import { StyleSheet, Text, View } from "react-native";
 import DiscoverMovie from "../Components/DiscoverMovies";
 import TrendingMovies from "../Components/TrendingMovies";
 import TrendingPeople from "../Components/TrendingPeople";
