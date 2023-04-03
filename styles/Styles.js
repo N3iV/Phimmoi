@@ -158,6 +158,15 @@ const Styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
   },
+  input: {
+    width: "86%",
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderColor: "#fff",
+    color: "#fff",
+  },
 });
 
 export default Styles;

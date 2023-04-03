@@ -14,3 +14,7 @@ export const getDiscoverMovies = () => {
 export const getTrendingMovies = () => {
   return http.get("/movie/top_rated");
 };
+export const getMoviesByName = (query) => {
+  const params = { query };
+  return http.get("/search/movie", { params });
+};
