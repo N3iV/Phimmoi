@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { getPopular } from "../api/movies";
-import DiscoverMovie from "../components/DiscoverMovies";
 import TrendingMovies from "../components/TrendingMovies";
 import TrendingPeople from "../components/TrendingPeople";
 import Styles from "../styles/Styles";
+import DiscoverMovie from "../components/DiscoverMovies";
 
 export default function Home(props) {
   return (
