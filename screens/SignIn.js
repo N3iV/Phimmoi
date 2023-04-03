@@ -30,7 +30,7 @@ const SignIn = () => {
           (userCredential) => {
             const user = userCredential.user;
 
-            if (user) navigation.navigate("Home");
+            if (user) navigation.navigate("StartDrawer");
           }
         );
       }
