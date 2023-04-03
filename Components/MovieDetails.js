@@ -30,7 +30,7 @@ const MovieDetails = (props) => {
       <View style={Styles.arrowBack}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.pop();
           }}
         >
           <Icon name="arrowleft" color={Constants.textColor} size={30}></Icon>
