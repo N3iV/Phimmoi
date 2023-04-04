@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
-import MovieDetails from "../Components/MovieDetails";
+import MovieDetails from "../components/MovieDetails";
 import Search from "../screens/Search";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TouchableOpacity } from "react-native-gesture-handler";
