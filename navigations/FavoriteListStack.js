@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import FavoriteList from "../screens/FavoriteList";
-import MovieDetails from "../components/MovieDetails";
+import MovieDetails from "../Components/MovieDetails";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
@@ -20,6 +20,7 @@ export default function FavoriteListStack() {
         component={FavoriteList}
         options={headerStyleFav}
       />
+      <Stack.Screen name="Search" component={Search} options={headerStyle} />
       <Stack.Screen
         name="movieDetails"
         component={MovieDetails}
