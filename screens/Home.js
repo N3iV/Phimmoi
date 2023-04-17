@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
-import { getPopular } from "../api/movies";
 import DiscoverMovie from "../Components/DiscoverMovies";
 import TrendingMovies from "../Components/TrendingMovies";
 import TrendingPeople from "../Components/TrendingPeople";

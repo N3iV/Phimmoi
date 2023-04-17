@@ -9,10 +9,14 @@ import IconIos from "react-native-vector-icons/Ionicons";
 import Styles from "../styles/Styles";
 import Genres from "./Genres";
 import Constants from "../constants/constants";
+import { db } from "../config/firebase";
+import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
 
 const MovieDetails = (props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [details, setDetails] = useState([]);
+  const [currentID, setCurrentID] = useState("");
+  console.log(details, " here");
 
   //maybe delete
   const navigation = useNavigation();
@@ -24,6 +28,30 @@ const MovieDetails = (props) => {
     };
     _getMovie();
   }, []);
+
+  const favRef = collection(db, "favoriteMovie");
+
+  useEffect(() => {
+    const handleAddFav = async () => {
+      console.log(isLiked, "isLiked");
+      try {
+        const data = {
+          id: details.id,
+          poster_path: details.poster_path,
+          origin_title: details.original_title,
+          release_date: details.release_date,
+          vote_average: details.vote_average,
+        };
+        if (isLiked) {
+          addDoc(favRef, data).then((res) => setCurrentID(res.id));
+        } else {
+          const docRef = doc(db, "favoriteMovie", currentID);
+          deleteDoc(docRef);
+        }
+      } catch (error) {}
+    };
+    handleAddFav();
+  }, [isLiked]);
 
   return (
     <View style={Styles.sectionBg}>

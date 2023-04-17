@@ -12,6 +12,7 @@ import FavoriteMovie from "../Components/FavoriteMovie";
 import { useNavigation } from "@react-navigation/native";
 
 const FavoriteList = (props) => {
+  console.log("FavoriteList");
   const navigation = useNavigation();
   return (
     <View style={Styles.sectionBg}>

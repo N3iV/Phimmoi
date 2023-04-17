@@ -3,19 +3,51 @@ import React, { useEffect, useState } from "react";
 import { getFavoriteMovie, getTrendingMovies } from "../api/movies";
 import Styles from "../styles/Styles";
 import { POSTER_IMAGE } from "../helper/config";
+import { collection, getDoc, getDocs, query } from "firebase/firestore";
+import { db } from "../config/firebase";
+import {
+  CommonActions,
+  useIsFocused,
+  useNavigation,
+} from "@react-navigation/native";
 
 const FavoriteMovie = (props) => {
   const [favList, setFavList] = useState();
   const [loading, setLoading] = useState(true);
+  const isFocused = useIsFocused();
+  const navigation = useNavigation();
 
+  console.log("here");
   useEffect(() => {
     const _getFavoriteMovie = async () => {
-      const data = await getFavoriteMovie();
-      setFavList(data.results);
-      setLoading(false);
+      const q = query(collection(db, "favoriteMovie"));
+      const querySnapShop = await getDocs(q);
+      const queryData = querySnapShop.docs.map((detail) => ({
+        ...detail.data(),
+        id: detail.id,
+      }));
+      console.log(queryData, " query data");
+      setFavList(queryData);
     };
     _getFavoriteMovie();
   }, []);
+
+  useEffect(() => {
+    console.log("here----");
+    if (!isFocused) {
+      navigation.dispatch((state) => {
+        const routes = state.routes.filter(
+          (item) => item.name !== "SplashScreen"
+        );
+
+        return CommonActions.reset({
+          ...state,
+          routes,
+          index: routes.length - 1,
+        });
+      });
+    }
+  }, [isFocused, navigation]);
   return (
     <View>
       <Text style={Styles.heading}>Favorite Movies</Text>
