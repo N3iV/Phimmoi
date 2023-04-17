@@ -18,3 +18,6 @@ export const getMoviesByName = (query) => {
   const params = { query };
   return http.get("/search/movie", { params });
 };
+export const getFavoriteMovie = () => {
+  return http.get("/account/1/favorite/movies");
+};
