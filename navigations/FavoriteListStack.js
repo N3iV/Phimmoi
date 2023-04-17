@@ -6,6 +6,7 @@ import MovieDetails from "../components/MovieDetails";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
+import Search from "../screens/Search";
 
 export default function FavoriteListStack() {
   const Stack = createStackNavigator();
@@ -20,7 +21,8 @@ export default function FavoriteListStack() {
         component={FavoriteList}
         options={headerStyleFav}
       />
-      <Stack.Screen name="Search" component={Search} options={headerStyle} />
+      <Stack.Screen name="Search" component={Search} options={headerStyleFav} />
+
       <Stack.Screen
         name="movieDetails"
         component={MovieDetails}
@@ -37,9 +39,18 @@ function showSideBar() {
     </TouchableOpacity>
   );
 }
+function SearchClick() {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+      <Icon name="search" size={20} color="#fff" />
+    </TouchableOpacity>
+  );
+}
 const headerStyleFav = {
   title: "Movies",
   headerStyle: { backgroundColor: "#000" },
   headerTitleStyle: { color: "#fff" },
   headerLeft: showSideBar,
+  headerRight: SearchClick,
 };

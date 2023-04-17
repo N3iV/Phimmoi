@@ -1,6 +1,6 @@
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
-import { getTrendingMovies } from "../api/movies";
+import { getFavoriteMovie, getTrendingMovies } from "../api/movies";
 import Styles from "../styles/Styles";
 import { POSTER_IMAGE } from "../helper/config";
 
@@ -9,12 +9,12 @@ const FavoriteMovie = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getMovies = async () => {
-      const data = await getTrendingMovies();
+    const _getFavoriteMovie = async () => {
+      const data = await getFavoriteMovie();
       setFavList(data.results);
       setLoading(false);
     };
-    getMovies();
+    _getFavoriteMovie();
   }, []);
   return (
     <View>
