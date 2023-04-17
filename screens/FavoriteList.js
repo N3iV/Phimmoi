@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Styles from "../styles/Styles";
-import FavoriteMovie from "../components/FavoriteMovie";
+import FavoriteMovie from "../Components/FavoriteMovie";
 import { useNavigation } from "@react-navigation/native";
 
 const FavoriteList = (props) => {

@@ -2,9 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import HomeStack from "./HomeStack";
 import FavoriteListStack from "./FavoriteListStack";
+import SearchStack from "./SearchStack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Constants from "../constants/constants";
-import CustomDrawer from "../components/CustomDrawer";
+import CustomDrawer from "../Components/CustomDrawer";
 import Icon from "react-native-vector-icons/Ionicons";
 const StartDrawer = () => {
   const Drawer = createDrawerNavigator();
