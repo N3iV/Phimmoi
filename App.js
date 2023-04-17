@@ -6,6 +6,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AuthenticateStack from "./navigations/AuthenticateStack";
 import StartDrawer from "./navigations/StartDrawer";
+import SearchStack from "./navigations/SearchStack";
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -22,6 +23,11 @@ export default function App() {
           name="StartDrawer"
           options={{ headerShown: false }}
           component={StartDrawer}
+        />
+        <Stack.Screen
+          name="SearchStack"
+          options={{ headerShown: false }}
+          component={SearchStack}
         />
       </Stack.Navigator>
     </NavigationContainer>

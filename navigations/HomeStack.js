@@ -1,9 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import MovieDetails from "../Components/MovieDetails";
-import Search from "../screens/Search";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
@@ -13,7 +11,6 @@ export default function HomeStack() {
   return (
     <Stack.Navigator screenOptions={headerStyle} initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} options={headerStyle} />
-      <Stack.Screen name="Search" component={Search} options={headerStyle} />
       <Stack.Screen
         name="movieDetails"
         component={MovieDetails}
@@ -33,7 +30,7 @@ function showSideBar() {
 function SearchClick() {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+    <TouchableOpacity onPress={() => navigation.navigate("SearchStack")}>
       <Icon name="search" size={20} color="#fff" />
     </TouchableOpacity>
   );

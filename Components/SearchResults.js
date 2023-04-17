@@ -36,11 +36,16 @@ const SearchResults = (props) => {
                     <TextInput
                         style={Styles.input}
                         placeholder="Search"
+                        placeholderTextColor="#D2D2D2"
                         value={searchText}
                         onChangeText={text => setSearchText(text)}
                         onSubmitEditing={handleSearch}
                     />
                     </View>
+                    {/* <TouchableOpacity>
+                        <Text style={styles.cardText}>Movies</Text>
+                        <View style={styles.cardText}> </View>
+                    </TouchableOpacity> */}
                     <FlatList
                         keyExtractor={(item) => item.id}
                         data={movies}
