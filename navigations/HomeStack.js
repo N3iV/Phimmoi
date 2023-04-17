@@ -11,7 +11,6 @@ export default function HomeStack() {
   return (
     <Stack.Navigator screenOptions={headerStyle} initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} options={headerStyle} />
-      <Stack.Screen name="Search" component={Search} options={headerStyle} />
       <Stack.Screen
         name="movieDetails"
         component={MovieDetails}
