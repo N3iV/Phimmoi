@@ -1,5 +1,5 @@
 import { View, Text, Linking, Image } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { getMovieById } from "../api/movies";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
@@ -10,14 +10,14 @@ import Styles from "../styles/Styles";
 import Genres from "./Genres";
 import Constants from "../constants/constants";
 import { db } from "../config/firebase";
-import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
 
 const MovieDetails = (props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [details, setDetails] = useState([]);
   const [currentID, setCurrentID] = useState("");
+  const [Favlist, setFavList] = useState([])
   console.log(details, " here");
-
   //maybe delete
   const navigation = useNavigation();
 
@@ -27,6 +27,28 @@ const MovieDetails = (props) => {
       setDetails(res);
     };
     _getMovie();
+  }, []);
+
+  const isFav = useMemo(()=>{
+    return Favlist.find(item=> item.id === props.route.params.movieId)
+  },[Favlist])
+
+  useEffect(()=>{
+    if(isFav) setIsLiked(true)
+  },[isFav])
+
+  useEffect(() => {
+    const _getFavoriteMovie = async () => {
+      const q = query(collection(db, "favoriteMovie"));
+      const querySnapShop = await getDocs(q);
+      const queryData = querySnapShop.docs.map((detail) => ({
+        ...detail.data(),
+        SnapId: detail.id,
+      }));
+      console.log(queryData, " query data");
+      setFavList(queryData);
+    };
+    _getFavoriteMovie();
   }, []);
 
   const favRef = collection(db, "favoriteMovie");
