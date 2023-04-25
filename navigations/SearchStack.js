@@ -7,7 +7,6 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
-
 export default function SearchStack() {
   const Stack = createStackNavigator();
 
@@ -30,13 +29,13 @@ export default function SearchStack() {
   );
 }
 function showSideBar() {
-    const navigation = useNavigation();
-    return (
-      <TouchableOpacity onPress={() => navigation.navigate("StartDrawer")}>
-        <Icon name="bars" size={20} color="#fff" style={{ marginLeft: 15 }} />
-      </TouchableOpacity>
-    );
-  }
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate("StartDrawer")}>
+      <Icon name="bars" size={20} color="#fff" style={{ marginLeft: 15 }} />
+    </TouchableOpacity>
+  );
+}
 const headerStyleSearch = {
   title: "Movies",
   headerStyle: { backgroundColor: "#000" },

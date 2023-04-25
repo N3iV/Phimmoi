@@ -12,9 +12,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 export default function CustomDrawer(props) {
   return (
     <View style={{ flex: 1 }}>
-      <View>
-        <Text style={Styles.heading}>MovieApp</Text>
-      </View>
+      <Text style={Styles.headingStack}>MovieApp</Text>
       <DrawerContentScrollView
         {...props}
         contentContainerStyle={{ backgroundColor: Constants.thirdColor }}

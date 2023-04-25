@@ -5,6 +5,9 @@ const Constants = {
   secondaryColor: "#F4C10F",
   thirdColor: "#0F1520",
   likeButtonColor: "#ecadb5",
+  avatarColor: "#ccc",
+  backgroundColor: "#040712",
+  placeHolder: "#bbb",
 };
 
 export default Constants;

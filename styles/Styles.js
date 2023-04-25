@@ -132,7 +132,6 @@ const Styles = StyleSheet.create({
   },
   drawerList: {
     color: Constants.textColor,
-    paddingTop: 20,
   },
   logOut: {
     textAlign: "center",
@@ -166,6 +165,71 @@ const Styles = StyleSheet.create({
     padding: 10,
     borderColor: "#fff",
     color: "#fff",
+  },
+  avatar: {
+    height: 150,
+    minWidth: 150,
+    resizeMode: "cover",
+    borderWidth: 5,
+    borderRadius: 100,
+    borderColor: "#000",
+  },
+  avatarContainer: {
+    position: "absolute",
+    top: 150,
+    marginLeft: deviceWidth / 2 - 75,
+    zIndex: 100,
+  },
+  profileContainer: {
+    width: deviceWidth,
+    backgroundColor: "#040712",
+    height: deviceHeight,
+  },
+  inputContainer: {
+    marginTop: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    width: deviceWidth,
+  },
+
+  inputWrapper: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    marginVertical: 5,
+  },
+  label: {
+    fontWeight: "bold",
+    color: Constants.textColor,
+    marginBottom: 5,
+    width: 60,
+  },
+
+  input: {
+    fontSize: 16,
+    backgroundColor: "transparent",
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginLeft: 10,
+    width: 250,
+    borderBottomColor: "#ccc",
+    borderWidth: 1,
+    color: Constants.textColor,
+  },
+  name: {
+    color: Constants.textColor,
+    fontWeight: 700,
+    fontSize: 26,
+    textAlign: "center",
+    marginTop: 50,
+  },
+  headingStack: {
+    fontSize: 24,
+    color: Constants.textColor,
+    marginTop: 50,
+    textAlign: "center",
+    fontFamily: "Arial",
+    fontWeight: "800",
   },
 });
 

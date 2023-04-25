@@ -17,6 +17,7 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Toast from "react-native-toast-message";
 import { Alert } from "react-native";
+import Constants from "../constants/constants";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,9 @@ const SignIn = () => {
           (userCredential) => {
             const user = userCredential.user;
 
-            if (user) navigation.navigate("StartDrawer");
+            if (user) {
+              navigation.navigate("StartDrawer");
+            }
           }
         );
       }
@@ -46,6 +49,7 @@ const SignIn = () => {
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
+          placeholderTextColor={Constants.placeHolder}
           style={styles.input}
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -56,6 +60,7 @@ const SignIn = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
+          placeholderTextColor={Constants.placeHolder}
         />
       </View>
       <Text style={styles.textSignup}>
@@ -96,6 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    backgroundColor: Constants.baseColor,
   },
   inputContainer: {
     width: "80%",
@@ -117,11 +123,13 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 16,
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     paddingHorizontal: 15,
     paddingVertical: 15,
     marginTop: 20,
-    borderRadius: 10,
+    borderBottomWidth: 1,
+    borderColor: Constants.textColor,
+    color: Constants.textColor,
   },
   buttonText: {
     fontSize: 16,
@@ -129,20 +137,21 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   buttonOutline: {
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     marginTop: 10,
     borderColor: "#7892F9",
     borderWidth: 2,
     flexDirection: "row",
   },
   link: {
-    color: "blue",
+    color: "#7892F9",
     textDecorationLine: "underline",
   },
   textSignup: {
     width: "80%",
     fontSize: 16,
     marginTop: 20,
+    color: "#fff",
   },
   textHeader: {
     fontSize: 50,

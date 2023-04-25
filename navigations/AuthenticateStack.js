@@ -9,7 +9,7 @@ export default function AuthenticateStack() {
 
   return (
     <Stack.Navigator
-      screenOptions={{ headerTitleAlign: "center" }}
+      screenOptions={{ headerShown: false }}
       initialRouteName="SignIn"
     >
       <Stack.Screen name="SignIn" component={SignIn} />

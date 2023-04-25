@@ -5,6 +5,7 @@ import MovieDetails from "../Components/MovieDetails";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
+import Profile from "../screens/Profile";
 
 export default function HomeStack() {
   const Stack = createStackNavigator();
@@ -16,6 +17,7 @@ export default function HomeStack() {
         component={MovieDetails}
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="Profile" component={Profile} options={headerStyle} />
     </Stack.Navigator>
   );
 }

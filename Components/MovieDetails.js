@@ -58,7 +58,7 @@ const MovieDetails = (props) => {
       <View style={Styles.arrowBack}>
         <TouchableOpacity
           onPress={() => {
-            navigation.pop();
+            navigation.goBack();
           }}
         >
           <Icon name="arrowleft" color={Constants.textColor} size={30}></Icon>

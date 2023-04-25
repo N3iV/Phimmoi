@@ -7,6 +7,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Constants from "../constants/constants";
 import CustomDrawer from "../Components/CustomDrawer";
 import Icon from "react-native-vector-icons/Ionicons";
+import Profile from "../screens/Profile";
 const StartDrawer = () => {
   const Drawer = createDrawerNavigator();
 
@@ -42,6 +43,16 @@ const StartDrawer = () => {
           title: "Favorite Movies",
           drawerIcon: () => (
             <Icon name="ios-list-outline" size={20} color="#fff" />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: "Profile",
+          drawerIcon: () => (
+            <Icon name="person-outline" size={20} color="#fff" />
           ),
         }}
       />
