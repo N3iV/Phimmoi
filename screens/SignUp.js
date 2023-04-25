@@ -18,6 +18,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
 import Constants from "../constants/constants";
+import Styles from "../styles/Styles";
+import Icon from "react-native-vector-icons/AntDesign";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -54,6 +56,15 @@ const SignUp = () => {
   };
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <View style={styles.arrowBack}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <Icon name="arrowleft" color={"#7892F9"} size={30}></Icon>
+        </TouchableOpacity>
+      </View>
       <Text style={styles.textHeader}>Sign up</Text>
       <View style={styles.inputContainer}>
         <TextInput
@@ -167,4 +178,13 @@ const styles = StyleSheet.create({
     color: "#7892F9",
   },
   buttonOutlineText: {},
+  arrowBack: {
+    position: "absolute",
+    borderRadius: 100,
+    color: "7892F9",
+    zIndex: 10,
+    top: 40,
+    left: 10,
+    marginLeft: 10,
+  },
 });

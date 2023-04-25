@@ -8,8 +8,10 @@ import Constants from "../constants/constants";
 import Styles from "../styles/Styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 export default function CustomDrawer(props) {
+  const navigation = useNavigation();
   return (
     <View style={{ flex: 1 }}>
       <Text style={Styles.headingStack}>MovieApp</Text>
@@ -29,6 +31,9 @@ export default function CustomDrawer(props) {
             alignItems: "center",
             padding: 10,
             paddingRight: 20,
+          }}
+          onPress={() => {
+            navigation.navigate("AuthenticateStack");
           }}
         >
           <Icon
