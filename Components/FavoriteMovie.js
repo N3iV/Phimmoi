@@ -16,7 +16,7 @@ const FavoriteMovie = (props) => {
   const [loading, setLoading] = useState(true);
   const isFocused = useIsFocused();
   const navigation = useNavigation();
-
+  
   console.log("here");
   useEffect(() => {
     const _getFavoriteMovie = async () => {
@@ -24,7 +24,7 @@ const FavoriteMovie = (props) => {
       const querySnapShop = await getDocs(q);
       const queryData = querySnapShop.docs.map((detail) => ({
         ...detail.data(),
-        id: detail.id,
+        SnapId: detail.id,
       }));
       console.log(queryData, " query data");
       setFavList(queryData);
@@ -37,7 +37,7 @@ const FavoriteMovie = (props) => {
     if (!isFocused) {
       navigation.dispatch((state) => {
         const routes = state.routes.filter(
-          (item) => item.name !== "SplashScreen"
+          (item) => item.name !== "MovieDetails"
         );
 
         return CommonActions.reset({
