@@ -11,29 +11,45 @@ import {
 import { auth } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
+  getAuth,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
-const onSignIn = () => {
-  const navigation = useNavigation();
-  navigation.navigate("Home");
-};
+import { Alert } from "react-native";
+import Constants from "../constants/constants";
+
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRP, setPasswordRP] = useState("");
+  const [name, setName] = useState("");
   const navigation = useNavigation();
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     if (password == passwordRP) {
-      createUserWithEmailAndPassword(auth, email, password).then(
-        (userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        }
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
+      const user = userCredential.user;
+      await updateUserProfile(name);
+      navigation.navigate("StartDrawer");
     } else {
-      console.log("Mật khẩu không trùng khớp");
+      console.log("Password does not match");
+      Alert.alert("Password does not match");
+    }
+  };
+  const updateUserProfile = (name) => {
+    const authe = getAuth();
+    const user = authe.currentUser;
+    if (user) {
+      updateProfile(authe.currentUser, {
+        displayName: name,
+        photoURL:
+          "https://ps.w.org/user-avatar-reloaded/assets/icon-128x128.png?rev=2540745",
+      });
     }
   };
   return (
@@ -41,20 +57,30 @@ const SignUp = () => {
       <Text style={styles.textHeader}>Sign up</Text>
       <View style={styles.inputContainer}>
         <TextInput
+          placeholder="Name"
+          style={styles.input}
+          value={name}
+          onChangeText={(text) => setName(text)}
+          placeholderTextColor={Constants.placeHolder}
+        />
+        <TextInput
           placeholder="Email"
           style={styles.input}
           value={email}
           onChangeText={(text) => setEmail(text)}
+          placeholderTextColor={Constants.placeHolder}
         />
         <TextInput
           placeholder="Password"
           style={styles.input}
           value={password}
           onChangeText={(text) => setPassword(text)}
+          placeholderTextColor={Constants.placeHolder}
           secureTextEntry
         />
         <TextInput
           placeholder="Repeat Password"
+          placeholderTextColor={Constants.placeHolder}
           style={styles.input}
           value={passwordRP}
           onChangeText={(text) => setPasswordRP(text)}
@@ -85,6 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    backgroundColor: Constants.baseColor,
   },
   inputContainer: {
     width: "80%",
@@ -106,11 +133,13 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 16,
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
     paddingHorizontal: 15,
     paddingVertical: 15,
     marginTop: 20,
-    borderRadius: 10,
+    borderBottomWidth: 1,
+    borderColor: Constants.textColor,
+    color: Constants.textColor,
   },
   buttonText: {
     color: "#fff",
@@ -122,13 +151,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
   link: {
-    color: "blue",
+    color: "#7892F9",
     textDecorationLine: "underline",
   },
   textSignup: {
     width: "80%",
     fontSize: 16,
     marginTop: 20,
+    color: "#fff",
   },
   textHeader: {
     fontSize: 50,
